@@ -11,5 +11,7 @@
 defined('MOODLE_INTERNAL') || die();
 
 $plugin->component = 'block_private_shares';
-$plugin->version = 2021082600;  // YYYYMMDDHH (year, month, day, 24-hr time)
-$plugin->requires = 2014051200; // YYYYMMDDHH (This is the release version for Moodle 2.0)
+$plugin->version = 2026032600;  // YYYYMMDDHH Moodle 4.5 where it runs tested
+$plugin->requires = 2022041900; // YYYYMMDDHH Moodle 4.0+ (actually works with older ones too)
+$plugin->maturity = MATURITY_STABLE;
+$plugin->release = "1.0.0"   
