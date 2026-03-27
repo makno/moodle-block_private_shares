@@ -1,17 +1,21 @@
 <?php
+// This file is part of Moodle - http://moodle.org/
+//
+// Moodle is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License...
+//
+// @package    block_private_shares
+// @copyright  2026 Mathias Knoll
+// @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
 
 /**
- * Private Shares Block
+ * Block that handles private shares.
  *
  * @package    block_private_shares
- * @copyright  Mathias Knoll <mathias.knoll@fh-joanneum.at>
+ * @copyright  2026 Your Name
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-
-defined('MOODLE_INTERNAL') || die();
-
 class block_private_shares extends block_base {
-
     // Shared content
     public $hasfilename = false;
     public $filename = '';
