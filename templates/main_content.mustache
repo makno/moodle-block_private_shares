@@ -1,35 +1,37 @@
-<div id="private_shares-area-{{id}}" data-id="{{id}}">
+<div class="block_private_shares">
+    <div id="private_shares-area-{{id}}" data-id="{{id}}">
 
-    {{#hastext}}
-        <!-- Introduction text -->
-        <p><i>{{text}}</i></p>
-    {{/hastext}}
+        {{#hastext}}
+            <!-- Introduction text -->
+            <p><i>{{text}}</i></p>
+        {{/hastext}}
 
-    {{#isteacher}}
-    <!-- Teacher -->
-        {{#shares}}
-            {{#serror}}
-                <pre><b>{{serrortext}}</b></pre>
-            {{/serror}}
-            {{^serror}}
-                <pre><b>{{sname}}:</b><br>{{stextshort}}</pre>
-            {{/serror}}
-        {{/shares}}
-    {{/isteacher}}
+        {{#isteacher}}
+        <!-- Teacher -->
+            {{#shares}}
+                {{#serror}}
+                    <pre><b>{{serrortext}}</b></pre>
+                {{/serror}}
+                {{^serror}}
+                    <pre><b>{{sname}}:</b><br>{{stextshort}}</pre>
+                {{/serror}}
+            {{/shares}}
+        {{/isteacher}}
 
-    {{^isteacher}}
-    <!-- Other than Teacher -->
-        {{#usershare}}
-            {{#hasfilename}}
-                <a download="{{filename}}" href="data:text/plain;base64,{{stextbase64}}">Download {{filename}}!</a>
-            {{/hasfilename}}
-            {{^hasfilename}}
-                <pre>{{stext}}</pre>
-            {{/hasfilename}}
-        {{/usershare}}
-        {{^usershare}}
-            {{error_usershare}}
-        {{/usershare}}
-    {{/isteacher}}
-
+        {{^isteacher}}
+        <!-- Other than Teacher -->
+            {{#usershare}}
+                {{#hasfilename}}
+                    <a download="{{filename}}" href="data:text/plain;base64,{{stextbase64}}">Download {{filename}}!</a>
+                {{/hasfilename}}
+                {{^hasfilename}}
+                    <pre>{{stext}}</pre>
+                {{/hasfilename}}
+            {{/usershare}}
+            {{^usershare}}
+                {{error_usershare}}
+            {{/usershare}}
+        {{/isteacher}}
+    </div>
 </div>
+
