@@ -44,11 +44,11 @@ class page_main_content implements renderable, templatable {
     protected $userid;
     /**
      * Constructor using manager and user.
-     * @param $manager
+     * @param $tmpmanager
      * @param $userid
      */
-    public function __construct($manager, $userid = null) {
-        $this->manager = $manager;
+    public function __construct($tmpmanager, $userid = null) {
+        $this->manager = $tmpmanager;
         $this->userid = $userid;
     }
     /**
@@ -60,14 +60,14 @@ class page_main_content implements renderable, templatable {
         global $DB, $USER;
         $data = [];
         $data['img_logo'] = $output->image_url('logo', 'block_private_shares');
-        $data['title'] = $this->manager->private_shares->title;
-        $data['hastext'] = !empty($this->manager->private_shares->text);
-        $data['text'] = $this->manager->private_shares->text;
-        $data['shares'] = $this->manager->private_shares->shares;
-        $data['usershare'] = $this->manager->private_shares->usershare;
-        $data['isteacher'] = $this->manager->private_shares->isteacher;
-        $data['hasfilename'] = $this->manager->private_shares->hasfilename;
-        $data['filename'] = $this->manager->private_shares->filename;
+        $data['title'] = $this->manager->privateshares->title;
+        $data['hastext'] = !empty($this->manager->privateshares->text);
+        $data['text'] = $this->manager->privateshares->text;
+        $data['shares'] = $this->manager->privateshares->shares;
+        $data['usershare'] = $this->manager->privateshares->usershare;
+        $data['isteacher'] = $this->manager->privateshares->isteacher;
+        $data['hasfilename'] = $this->manager->privateshares->hasfilename;
+        $data['filename'] = $this->manager->privateshares->filename;
         $data['error_usershare'] = get_string('error_no_usershare', 'block_private_shares');
 
         return $data;
