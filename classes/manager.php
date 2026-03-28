@@ -76,7 +76,7 @@ class manager {
 
     /**
      * Constructor with block object.
-     * @param $privateshares
+     * @param block_private_shares $privateshares The private shares block instance.
      */
     protected function __construct($privateshares) {
         $this->privateshares = $privateshares;
@@ -95,8 +95,8 @@ class manager {
 
     /**
      * Check on view capability.
-     * @param $userid
-     * @return bool
+     * @param int|null $userid The user ID to check, or null for the current user.
+     * @return bool True if the user can view, false otherwise.
      */
     public function can_view($userid = null) {
         return has_capability(self::CAN_VIEW, $this->context, $userid) || $this->can_manage();
@@ -104,9 +104,9 @@ class manager {
 
     /**
      * Get instance.
-     * @param $privateshares
-     * @param $forcereload
-     * @return static
+     * @param block_private_shares $privateshares The private shares block instance.
+     * @param bool $forcereload Whether to force reloading the instance.
+     * @return static The singleton instance.
      */
     public static function get($privateshares, $forcereload = false) {
         global $CFG;
@@ -124,16 +124,18 @@ class manager {
     }
     /**
      * Capabilities Requirement "manage".
-     * @param $userid
+     * @param int|null $userid The user ID to check, or null for the current user.
      * @return void
+     * @throws required_capability_exception If the user does not have the capability.
      */
     public function require_manage($userid = null) {
         require_capability(self::CAN_MANAGE, $this->context, $userid);
     }
     /**
      * Capabilities Requirement "view".
-     * @param $userid
+     * @param int|null $userid The user ID to check, or null for the current user.
      * @return void
+     * @throws required_capability_exception If the user does not have the capability.
      */
     public function require_view($userid = null) {
         if (!$this->can_view($userid)) {

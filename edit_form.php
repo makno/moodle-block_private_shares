@@ -27,7 +27,7 @@
 class block_private_shares_edit_form extends block_edit_form {
     /**
      * Form definition.
-     * @param $mform
+     * @param MoodleQuickForm $mform The form instance.
      * @return void
      */
     protected function specific_definition($mform) {
@@ -38,16 +38,12 @@ class block_private_shares_edit_form extends block_edit_form {
         $mform->setDefault('config_title', get_string('blocktitle_default', 'block_private_shares'));
         $mform->setType('config_title', PARAM_TEXT);
         $mform->addHelpButton('config_title', 'blocktitle', 'block_private_shares');
-
-
         $mform->addElement('text', 'config_text', get_string('blockstring', 'block_private_shares'));
         $mform->setType('config_text', PARAM_RAW);
         $mform->addHelpButton('config_text', 'blockstring', 'block_private_shares');
-
         $mform->addElement('text', 'config_filename', get_string('filename', 'block_private_shares'));
         $mform->setType('config_filename', PARAM_TEXT);
         $mform->addHelpButton('config_filename', 'filename', 'block_private_shares');
-
         $mform->addElement(
             'textarea',
             'config_shares',

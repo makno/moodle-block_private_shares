@@ -44,8 +44,8 @@ class page_main_content implements renderable, templatable {
     protected $userid;
     /**
      * Constructor using manager and user.
-     * @param $tmpmanager
-     * @param $userid
+     * @param manager $tmpmanager The manager instance.
+     * @param int|null $userid The user ID, or null for the current user.
      */
     public function __construct($tmpmanager, $userid = null) {
         $this->manager = $tmpmanager;
@@ -69,7 +69,6 @@ class page_main_content implements renderable, templatable {
         $data['hasfilename'] = $this->manager->privateshares->hasfilename;
         $data['filename'] = $this->manager->privateshares->filename;
         $data['error_usershare'] = get_string('error_no_usershare', 'block_private_shares');
-
         return $data;
     }
 }

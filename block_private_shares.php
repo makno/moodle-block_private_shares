@@ -174,7 +174,7 @@ class block_private_shares extends block_base {
                 $size = 2;
                 $countlines = 1;
                 foreach (preg_split('/((\r?\n)|(\r\n?))/', $this->config->shares) as $line) {
-                    $linearray = preg_split('/,/', $line);
+                    $linearray = explode(',', $line);
                     $l = [];
                     $l['serror'] = false;
                     $l['serrortext'] = '';
@@ -226,10 +226,10 @@ class block_private_shares extends block_base {
         }
     }
     /**
-     * Save configuration for instance
-     * @param $data
-     * @param $nolongerused
-     * @return mixed
+     * Save configuration.
+     * @param stdClass $data Configuration data.
+     * @param bool $nolongerused Unused parameter (kept for backward compatibility).
+     * @return bool True if the configuration was successfully saved.
      */
     public function instance_config_save($data, $nolongerused = false) {
         if (get_config('private_shares', 'how_header') == '1') {

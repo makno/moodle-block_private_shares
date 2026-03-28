@@ -22,19 +22,39 @@
  */
 
 /**
- * Pluiginfile.
+ * Pluginfile.
  * @package    block_private_shares
  * @copyright  2026 Your Name
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ */
+
+/**
+ * Serves private shares files.
+ * @package    block_private_shares
+ * @copyright  2026 Your Name
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ * @param stdClass $course The course object.
+ * @param stdClass $cm The course module object.
+ * @param context $context The context for the file.
+ * @param string $filearea The file area being requested.
+ * @param array $args Extra arguments, typically the filepath and filename.
+ * @param bool $forcedownload Whether or not to force download.
+ * @param array $options Additional options (optional).
+ * @return void Sends the file or does nothing if not found.
  */
 function block_private_shares_pluginfile($course, $cm, $context, $filearea, $args, $forcedownload, array $options = []) {
     global $CFG;
 }
 /**
- * Navigation.
+ * Adds items to the My Profile navigation tree for private shares.
  * @package    block_private_shares
  * @copyright  2026 Your Name
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ * @param \core_user\output\myprofile\tree $tree The profile navigation tree.
+ * @param stdClass $user The user object for whom the navigation is displayed.
+ * @param bool $iscurrentuser Whether the profile belongs to the current user.
+ * @param stdClass $course The course object context for this navigation.
+ * @return void
  */
 function block_private_shares_myprofile_navigation(\core_user\output\myprofile\tree $tree, $user, $iscurrentuser, $course) {
     global $PAGE;

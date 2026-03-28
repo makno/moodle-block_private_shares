@@ -1,6 +1,33 @@
+{{!
+    @template block_private_shares/content
+
+    Template for displaying private shares block.
+
+    Example context (json):
+    {
+        "id": 1,
+        "hastext": true,
+        "text": "Intro text",
+        "isteacher": true,
+        "shares": [
+            {
+                "serror": false,
+                "sname": "Student1",
+                "stextshort": "Short text",
+                "serrortext": ""
+            }
+        ],
+        "usershare": {
+            "hasfilename": true,
+            "filename": "file.txt",
+            "stextbase64": "ZGF0YQ==",
+            "stext": "Full text"
+        },
+        "error_usershare": "No data available"
+    }
+}}
 <div class="block_private_shares">
     <div id="private_shares-area-{{id}}" data-id="{{id}}">
-
         {{#hastext}}
             <!-- Introduction text -->
             <p><i>{{text}}</i></p>
