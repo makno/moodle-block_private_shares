@@ -21,7 +21,7 @@
  * Class for block form.
  *
  * @package    block_private_shares
- * @copyright  2026 Your Name
+ * @copyright  2026 Mathias Knoll
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class block_private_shares_edit_form extends block_edit_form {

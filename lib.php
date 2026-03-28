@@ -17,21 +17,21 @@
 /**
  * Library functionalities for block.
  * @package    block_private_shares
- * @copyright  2026 Your Name
+ * @copyright  2026 Mathias Knoll
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 /**
  * Pluginfile.
  * @package    block_private_shares
- * @copyright  2026 Your Name
+ * @copyright  2026 Mathias Knoll
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 /**
  * Serves private shares files.
  * @package    block_private_shares
- * @copyright  2026 Your Name
+ * @copyright  2026 Mathias Knoll
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  * @param stdClass $course The course object.
  * @param stdClass $cm The course module object.
@@ -48,7 +48,7 @@ function block_private_shares_pluginfile($course, $cm, $context, $filearea, $arg
 /**
  * Adds items to the My Profile navigation tree for private shares.
  * @package    block_private_shares
- * @copyright  2026 Your Name
+ * @copyright  2026 Mathias Knoll
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  * @param \core_user\output\myprofile\tree $tree The profile navigation tree.
  * @param stdClass $user The user object for whom the navigation is displayed.

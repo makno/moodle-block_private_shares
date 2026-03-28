@@ -31,7 +31,7 @@ use stdClass;
  * Block that handles private shares.
  *
  * @package    block_private_shares
- * @copyright  2026 Your Name
+ * @copyright  2026 Mathias Knoll
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class manager {

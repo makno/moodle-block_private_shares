@@ -29,7 +29,7 @@ use moodle_url;
  * Handle main content of block.
  *
  * @package    block_private_shares
- * @copyright  2026 Your Name
+ * @copyright  2026 Mathias Knoll
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class page_main_content implements renderable, templatable {
