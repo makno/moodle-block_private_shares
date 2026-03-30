@@ -41,5 +41,5 @@ $string['headerconfig'] = 'Configuration';
 $string['labelshowheader'] = 'Show header ';
 $string['pluginname'] = 'Private Shares';
 $string['private_shares'] = 'Private Shares';
-$string['greenpass:addinstance'] = 'Add a new private shares block';
-$string['greenpass:myaddinstance'] = 'Add a new private shares block to the My Moodle page';
+$string['private_shares:addinstance'] = 'Add a new private shares block';
+$string['private_shares:myaddinstance'] = 'Add a new private shares block to the My Moodle page';
