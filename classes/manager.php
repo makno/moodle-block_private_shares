@@ -86,7 +86,7 @@ class manager {
 
     /**
      * Capabilities check.
-     * @param $userid
+     * @param int|null $userid The user ID to check, or null for the current user.
      * @return mixed
      */
     public function can_manage($userid = null) {
