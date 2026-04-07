@@ -28,6 +28,13 @@
 
 namespace block_private_shares\privacy;
 
+/**
+ * Privacy.
+ *
+ * @package    block_private_shares
+ * @copyright  2026 Mathias Knoll
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ */
 class provider implements
     // This plugin does not store any personal user data.
     \core_privacy\local\metadata\null_provider {
