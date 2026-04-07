@@ -39,7 +39,7 @@ jobs:
         php: ['8.1', '8.2', '8.3', '8.4']
         moodle-branch: ['MOODLE_401_STABLE', 'MOODLE_405_STABLE', 'MOODLE_500_STABLE', 'MOODLE_501_STABLE']
         database: [pgsql, mariadb]
-        include:
+        # include:
           # PHP 7.4, with Moodle 4.1.
           #- moodle-branch: MOODLE_401_STABLE
           #  database: pgsql
