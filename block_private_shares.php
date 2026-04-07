@@ -175,15 +175,15 @@ class block_private_shares extends block_base {
     private function generatePrivateShare($shares) {
         global $DB, $USER;
 
-        $lengthShortFormat = 50;
+        $length_short_format = 50;
 
         $lines = preg_split('/((\r?\n)|(\r\n?))/', $shares);
 
         $usernames = [];
         foreach ($lines as $line) {
-            $arrayFromLine = explode(',', $line);
-            if (count($arrayFromLine) == 2) {
-                $usernames[] = $arrayFromLine[0];
+            $array_from_line = explode(',', $line);
+            if (count($array_from_line) == 2) {
+                $usernames[] = $array_from_line[0];
             }
         }
 
@@ -194,33 +194,33 @@ class block_private_shares extends block_base {
         $users = $DB->get_records_sql("SELECT id, username FROM {user} WHERE username $SQL", $params);
 
         // Re-index by username for fast lookup
-        $usersByName = [];
+        $users_by_name = [];
         foreach ($users as $u) {
-            $usersByName[$u->username] = $u;
+            $users_by_name[$u->username] = $u;
         }
 
         // Check shares file.
         $size = 2;
         $countlines = 1;
         foreach ($lines as $line) {
-            $arrayFromLine = explode(',', $line);
+            $array_from_line = explode(',', $line);
             $l = [];
             $l['serror'] = false;
             $l['serrortext'] = '';
-            if (count($arrayFromLine) == $size) {
+            if (count($array_from_line) == $size) {
                 // Field 1 Username.
-                if (isset($usersByName[$arrayFromLine[0]])) {
-                    $l['sname'] = $arrayFromLine[0];
+                if (isset($users_by_name[$array_from_line[0]])) {
+                    $l['sname'] = $array_from_line[0];
                 } else {
                     $l['serror'] = true;
                     $prm = new stdClass();
                     $prm->line = $countlines;
-                    $prm->username = $arrayFromLine[0];
+                    $prm->username = $array_from_line[0];
                     $l['serrortext'] = get_string('error_user_not_existing', 'block_private_shares', $prm);
                     $this->shares[] = $l;
                 }
                 // Field 2 Base64 Code.
-                $str = base64_decode($arrayFromLine[1], true);
+                $str = base64_decode($array_from_line[1], true);
                 if ($str === false) {
                     $l['serror'] = true;
                     $prm = new stdClass();
@@ -228,10 +228,10 @@ class block_private_shares extends block_base {
                     $l['serrortext'] = get_string('error_no_base64', 'block_private_shares', $prm);
                     $this->shares[] = $l;
                 } else {
-                    $l['stextbase64'] = $arrayFromLine[1];
+                    $l['stextbase64'] = $array_from_line[1];
                     $l['stext'] = $str;
                     if (strlen($str) > 100) {
-                        $l['stextshort'] = substr($str, 0, 50) . ' ... ' . substr($str, strlen($str) - $lengthShortFormat);
+                        $l['stextshort'] = substr($str, 0, 50) . ' ... ' . substr($str, strlen($str) - $length_short_format);
                     } else {
                         $l['stextshort'] = $str;
                     }
