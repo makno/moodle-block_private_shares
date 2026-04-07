@@ -243,7 +243,7 @@ class block_private_shares extends block_base {
                 $l['serrortext'] = get_string('error_number_fields', 'block_private_shares', $prm);
                 $this->shares[] = $l;
             }
-            if (array_key_exists('sname', $l) && $l['sname'] === $USER->userame) {
+            if (array_key_exists('sname', $l) && $l['sname'] === $USER->username) {
                 $this->usershare[] = $l;
             }
             if ($l['serror'] == false) {
