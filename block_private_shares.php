@@ -166,61 +166,68 @@ class block_private_shares extends block_base {
                 if ($rolename == "editingteacher" || $rolename == "teacher") {
                     $this->isteacher = true;
                 }
-                // Generate private shares for each user
-                $this->generatePrivateShare($this->config->shares);
+                // Generate private shares for each user.
+                $this->generate_private_share($this->config->shares);
             }
         }
     }
 
-    private function generatePrivateShare($shares) {
+    /**
+     * Specialization.
+     * @param string $shares
+     * @return void
+     * @throws coding_exception
+     * @throws dml_exception
+     */
+    private function generate_private_share($shares) {
         global $DB, $USER;
 
-        $length_short_format = 50;
+        $lengthshortformat = 50;
 
         $lines = preg_split('/((\r?\n)|(\r\n?))/', $shares);
 
         $usernames = [];
         foreach ($lines as $line) {
-            $array_from_line = explode(',', $line);
-            if (count($array_from_line) == 2) {
-                $usernames[] = $array_from_line[0];
+            $arrayfromline = explode(',', $line);
+            if (count($arrayfromline) == 2) {
+                $usernames[] = $arrayfromline[0];
             }
         }
 
         $usernames = array_unique($usernames);
 
-        list($SQL, $params) = $DB->get_in_or_equal($usernames, SQL_PARAMS_NAMED);
+        list($sql, $params) = $DB->get_in_or_equal($usernames, SQL_PARAMS_NAMED);
 
-        $users = $DB->get_records_sql("SELECT id, username FROM {user} WHERE username $SQL", $params);
+        $users = $DB->get_records_sql("SELECT id, username FROM {user} WHERE username $sql", $params);
 
-        // Re-index by username for fast lookup
-        $users_by_name = [];
+        // Re-index by username for fast lookup.
+        $usersbyname = [];
         foreach ($users as $u) {
-            $users_by_name[$u->username] = $u;
+            $usersbyname[$u->username] = $u;
         }
 
         // Check shares file.
         $size = 2;
         $countlines = 1;
         foreach ($lines as $line) {
-            $array_from_line = explode(',', $line);
+            $arrayfromline = explode(',', $line);
             $l = [];
             $l['serror'] = false;
             $l['serrortext'] = '';
-            if (count($array_from_line) == $size) {
+            if (count($arrayfromline) == $size) {
                 // Field 1 Username.
-                if (isset($users_by_name[$array_from_line[0]])) {
-                    $l['sname'] = $array_from_line[0];
+                if (isset($usersbyname[$arrayfromline[0]])) {
+                    $l['sname'] = $arrayfromline[0];
                 } else {
                     $l['serror'] = true;
                     $prm = new stdClass();
                     $prm->line = $countlines;
-                    $prm->username = $array_from_line[0];
+                    $prm->username = $arrayfromline[0];
                     $l['serrortext'] = get_string('error_user_not_existing', 'block_private_shares', $prm);
                     $this->shares[] = $l;
                 }
                 // Field 2 Base64 Code.
-                $str = base64_decode($array_from_line[1], true);
+                $str = base64_decode($arrayfromline[1], true);
                 if ($str === false) {
                     $l['serror'] = true;
                     $prm = new stdClass();
@@ -228,10 +235,10 @@ class block_private_shares extends block_base {
                     $l['serrortext'] = get_string('error_no_base64', 'block_private_shares', $prm);
                     $this->shares[] = $l;
                 } else {
-                    $l['stextbase64'] = $array_from_line[1];
+                    $l['stextbase64'] = $arrayfromline[1];
                     $l['stext'] = $str;
                     if (strlen($str) > 100) {
-                        $l['stextshort'] = substr($str, 0, 50) . ' ... ' . substr($str, strlen($str) - $length_short_format);
+                        $l['stextshort'] = substr($str, 0, 50) . ' ... ' . substr($str, strlen($str) - $lengthshortformat);
                     } else {
                         $l['stextshort'] = $str;
                     }
