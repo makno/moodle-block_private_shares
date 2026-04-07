@@ -1,8 +1,12 @@
-.block-private_shares-main {
+/**
+ * @copyright 2026 Mathias Knoll
+ */
+
+.block-private_shares .ps_main {
     background-color: green;
 }
 
-.block-private_shares-pre {
+.block-private_shares .ps-pre {
     padding: 2px;
     background-color: aliceblue;
 }

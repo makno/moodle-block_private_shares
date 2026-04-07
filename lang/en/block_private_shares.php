@@ -40,6 +40,7 @@ $string['filename_help'] = 'Data will be provided as a downloadable file for stu
 $string['headerconfig'] = 'Configuration';
 $string['labelshowheader'] = 'Show header ';
 $string['pluginname'] = 'Private Shares';
+$string['privacy:metadata'] = 'The Private Shares plugin is used by teachers to share individual data.';
 $string['private_shares'] = 'Private Shares';
 $string['private_shares:addinstance'] = 'Add a new private shares block';
 $string['private_shares:myaddinstance'] = 'Add a new private shares block to the My Moodle page';

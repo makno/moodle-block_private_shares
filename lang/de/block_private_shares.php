@@ -40,6 +40,7 @@ $string['filename_help'] = 'Daten werden für Studierende unter diesem Namen zum
 $string['headerconfig'] = 'Konfiguration';
 $string['labelshowheader'] = 'Kopfbereich anzeigen ';
 $string['pluginname'] = 'Private Shares';
+$string['privacy:metadata'] = 'Das Private-Shares-Plugin wird von Lehrern verwendet, um individuelle Daten zu teilen.';
 $string['private_shares'] = 'Private Freigaben';
 $string['private_shares:addinstance'] = 'Einen neuen Block mit privaten Freigaben hinzufügen';
 $string['private_shares:myaddinstance'] = 'Einen neuen Block mit privaten Freigaben auf meiner Moodle Seite hinzufügen';
