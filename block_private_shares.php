@@ -144,8 +144,7 @@ class block_private_shares extends block_base {
      * @return void
      */
     public function specialization() {
-        global $DB, $USER, $COURSE;
-        $shortformatlength = 50;
+        global $USER, $COURSE;
         if (isset($this->config)) {
             if (!empty($this->config->title)) {
                 $this->title = $this->config->title;
@@ -158,8 +157,6 @@ class block_private_shares extends block_base {
                 $this->filename = $this->config->filename;
             }
             if (!empty($this->config->shares)) {
-                // Get current user's name
-                $username = $USER->username;
                 // Get context.
                 $context = context_course::instance($COURSE->id);
                 // Get rolename of current user.
@@ -176,7 +173,10 @@ class block_private_shares extends block_base {
     }
 
     private function generatePrivateShare($shares) {
-        global $DB;
+        global $DB, $USER;
+
+        $lengthShortFormat = 50;
+
         $lines = preg_split('/((\r?\n)|(\r\n?))/', $shares);
 
         $usernames = [];
@@ -231,7 +231,7 @@ class block_private_shares extends block_base {
                     $l['stextbase64'] = $arrayFromLine[1];
                     $l['stext'] = $str;
                     if (strlen($str) > 100) {
-                        $l['stextshort'] = substr($str, 0, 50) . ' ... ' . substr($str, strlen($str) - $shortformatlength);
+                        $l['stextshort'] = substr($str, 0, 50) . ' ... ' . substr($str, strlen($str) - $lengthShortFormat);
                     } else {
                         $l['stextshort'] = $str;
                     }
@@ -243,7 +243,7 @@ class block_private_shares extends block_base {
                 $l['serrortext'] = get_string('error_number_fields', 'block_private_shares', $prm);
                 $this->shares[] = $l;
             }
-            if (array_key_exists('sname', $l) && $l['sname'] === $username) {
+            if (array_key_exists('sname', $l) && $l['sname'] === $USER->userame) {
                 $this->usershare[] = $l;
             }
             if ($l['serror'] == false) {
