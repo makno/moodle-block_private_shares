@@ -196,6 +196,10 @@ class block_private_shares extends block_base {
 
         $usernames = array_unique($usernames);
 
+        if (empty($usernames)) {
+            return;
+        }
+
         [$sql, $params] = $DB->get_in_or_equal($usernames, SQL_PARAMS_NAMED);
 
         $users = $DB->get_records_sql("SELECT id, username FROM {user} WHERE username $sql", $params);

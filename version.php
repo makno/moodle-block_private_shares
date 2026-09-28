@@ -25,7 +25,7 @@ defined('MOODLE_INTERNAL') || die();
 
 /** @var Plugin $plugin */
 $plugin->component = 'block_private_shares';
-$plugin->version = 2026040703;
+$plugin->version = 2026092801;
 $plugin->requires = 2022041900;
 $plugin->maturity = MATURITY_STABLE;
-$plugin->release = "1.0.6";
+$plugin->release = "1.0.7";
